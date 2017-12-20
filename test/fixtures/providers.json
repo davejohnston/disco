@@ -1,0 +1,93 @@
+[
+  {
+    "uuid": "d41e2236-f147-4a10-9701-df412dd58f75",
+    "name": "AWS",
+    "description": "Amazon Web Services",
+    "config": {
+      "AWS_ACCESS_KEY_ID": {
+        "name": "AWS_ACCESS_KEY_ID",
+        "label": "Access Key",
+        "description": "The Access key for your account",
+        "required": true
+      },
+      "AWS_DEFAULT_REGION": {
+        "name": "AWS_DEFAULT_REGION",
+        "label": "Region",
+        "description": "The default region for your account e.g. eu-west-1",
+        "required": true
+      },
+      "AWS_SECRET_ACCESS_KEY": {
+        "name": "AWS_SECRET_ACCESS_KEY",
+        "label": "Secret Access Key",
+        "description": "The Access key provided with your AMI account",
+        "required": true,
+        "masked" : true
+      }
+    }
+  },
+  {
+    "uuid": "d41e2236-f147-4a10-9701-df412dd58f73",
+    "name": "Openstack",
+    "description": "Openstack Private Cloud",
+    "config": {
+      "DomainName": {
+        "name": "DomainName",
+        "label": "DomainName",
+        "description": "The domain for this openstack deploymnet",
+        "required": true
+      },
+      "Endpoint": {
+        "name": "Endpoint",
+        "label": "Endpoint",
+        "description": "The Openstack service Endpoint",
+        "required": true
+      },
+      "Password": {
+        "name": "Password  ",
+        "label": "Password",
+        "description": "The password for your Openstack account",
+        "masked": true,
+        "required": true
+      },
+      "TenantID": {
+        "name": "TenantID",
+        "label": "TenantID",
+        "description": "The Openstack Project or Tenant ID",
+        "required": true
+      },
+      "Username": {
+        "name": "Username",
+        "label": "Username",
+        "description": "The username for your Openstack account",
+        "required": true
+      }
+    }
+  },
+  {
+    "uuid": "d41e2236-f147-4a10-9701-df412dd58f74",
+    "name": "VMWare",
+    "description": "VMWare vSphere",
+    "config": {
+      "Host": {
+        "name": "Host",
+        "label": "VMware API URL",
+        "description": "The URL used to access the VMware service",
+        "required": true
+      },
+      "Password": {
+        "name": "Password",
+        "label": "Password",
+        "description": "The password for your VMware account",
+        "masked": true,
+        "required": true
+      },
+      "Username": {
+        "name": "Username",
+        "label": "Username",
+        "description": "The username for your VMWare account",
+        "required": true
+      }
+    }
+  }
+]
+

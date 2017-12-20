@@ -1,0 +1,25 @@
+syntax = "proto3";
+package api;
+
+message ProviderConfigAttribute {
+    string name = 1;
+    string label = 2;
+    string description = 3;
+    bool masked =4;
+    string validator =5;
+    bool required = 6;
+}
+
+message Provider {
+    string uuid = 1;
+    string value = 2;
+    string name = 3;
+    string description = 4;
+    string bigIcon = 5;
+    string smallIcon = 6;
+    map<string, ProviderConfigAttribute> config = 7;
+}
+
+message ProviderList {
+    repeated Provider providers = 1;
+}

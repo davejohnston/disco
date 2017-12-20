@@ -1,0 +1,13 @@
+syntax = "proto3";
+package api;
+
+message Resource {
+    string uuid = 1;
+    string type = 10;
+    string scope = 15;
+    map<string, string> config = 20;
+}
+
+message ResourceList {
+    repeated Resource resources = 1;
+}

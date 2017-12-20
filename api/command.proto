@@ -1,0 +1,170 @@
+syntax = "proto3";
+package api;
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "protoc-gen-swagger/options/annotations.proto";
+import "api/secret.proto";
+import "api/job.proto";
+import "api/resource.proto";
+import "api/provider.proto";
+
+
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+  info: {
+    title: "Cloud Discovery API";
+    version: "1.0";
+    contact: {
+      name: "Cloud Discovery";
+      url: "https://github.com/puppetlabs/cloud-discovery";
+      email: "discovery@puppet.com";
+    };
+  };
+};
+
+
+message ID {
+    string uuid = 1;
+}
+
+
+// Controller service provides a API that gives consumers the
+// ability to discover resources
+service Command {
+
+    // GetProviders
+    //
+    // Returns a list of the available providers
+    rpc GetProviders(google.protobuf.Empty) returns (ProviderList) {
+        option (google.api.http) = {
+            get: "/v1/cmd/providers"
+        };
+    }
+
+    // GetProvider
+    //
+    // Given the provider ID returns the provider detail
+    rpc GetProvider(ID) returns (Provider) {
+        option (google.api.http) = {
+            get: "/v1/cmd/providers/{uuid}"
+        };
+    }
+
+    // GetResources
+    //
+    // Returns a list of the resources currently stored in the system
+    rpc GetResources(google.protobuf.Empty) returns (ResourceList) {
+        option (google.api.http) = {
+            get: "/v1/cmd/resources"
+        };
+    }
+
+    // GetResource
+    //
+    // Given the resource ID returns the resource detail
+    rpc GetResource(ID) returns (Resource) {
+        option (google.api.http) = {
+            get: "/v1/cmd/resources/{uuid}"
+        };
+    }
+
+    // CreateResource
+    //
+    rpc CreateResource(Resource) returns (Resource) {
+        option (google.api.http) = {
+            post: "/v1/cmd/resources"
+            body: "*"
+        };
+    }
+
+    // UpdateResource
+    //
+    rpc UpdateResource(Resource) returns (Resource) {
+        option (google.api.http) = {
+            put: "/v1/cmd/resources/{uuid}"
+            body: "*"
+        };
+    }
+
+    // DeleteResource
+    //
+    rpc DeleteResource(ID) returns (Resource) {
+        option (google.api.http) = {
+            delete: "/v1/cmd/resources/{uuid}"
+        };
+    }
+
+    //
+
+    // GetSecret
+    //
+    // Returns a list of the secrets currently stored in the system
+    // Sensitive information will not be returned
+    rpc GetSecrets(google.protobuf.Empty) returns (stream Secret) {
+        option (google.api.http) = {
+            get: "/v1/cmd/secrets"
+        };
+    }
+
+    // GetSecret
+    //
+    // Given the secret ID returns the secret detail.
+    // Sensitive information will not be returned
+    rpc GetSecret(ID) returns (Secret) {
+        option (google.api.http) = {
+            get: "/v1/cmd/secrets/{uuid}"
+        };
+    }
+
+    // CreateSecret
+    //
+    rpc CreateSecret(Secret) returns (Secret) {
+        option (google.api.http) = {
+            post: "/v1/cmd/secrets"
+            body: "*"
+        };
+    }
+
+    // UpdateSecret
+    // Updates the given secret.  Returns the secret
+    // but any sensitive information is excluded
+    rpc UpdateSecret(Secret) returns (Secret) {
+        option (google.api.http) = {
+            put: "/v1/cmd/secrets/{uuid}"
+            body: "*"
+        };
+    }
+
+    // DeleteSecret
+    // Deletes the secret specified by UUID.   The deleted
+    // secret is returned, but any sensitive information is excluded.
+    rpc DeleteSecret(ID) returns (Secret) {
+        option (google.api.http) = {
+            delete: "/v1/cmd/secrets/{uuid}"
+        };
+    }
+
+    // GetJobs
+    //
+    // Returns a list of the available jobs
+    rpc GetJobs(google.protobuf.Empty) returns (stream Job) {
+        option (google.api.http) = {
+            get: "/v1/cmd/jobs"
+        };
+    }
+
+    // GetJob
+    //
+    // Given the job ID returns the job detail
+    rpc GetJob(ID) returns (Job) {
+        option (google.api.http) = {
+            get: "/v1/cmd/jobs/{uuid}"
+        };
+    }
+
+
+    // TODO Add The following RPC Commands
+    // - RefreshAll, triggers a discovery/forage of all providers and resources currently
+    //               stored in the system.
+    // - Refresh(Provider), given a specific provider, trigger a forage for just that provider.
+}

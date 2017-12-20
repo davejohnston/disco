@@ -1,0 +1,20 @@
+{
+  "bdf2e8f2-6d92-4b36-a7f2-3b0237d80d58": {
+    "uuid": "bdf2e8f2-6d92-4b36-a7f2-3b0237d80d58",
+    "type": "aws",
+    "config": {
+      "AWS_ACCESS_KEY_ID": "AKIAJOZLBXUN2NZUAL4Q",
+      "AWS_DEFAULT_REGION": "eu-west-1",
+      "AWS_SECRET_ACCESS_KEY": "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"
+    }
+  },
+  "adf2e8f2-6d92-4b36-a7f2-3b0237d80d57": {
+    "uuid": "adf2e8f2-6d92-4b36-a7f2-3b0237d80d57",
+    "type": "vmware",
+    "config": {
+      "Host": "vcenter-test1.ops.puppetlabs.net",
+      "Username": "test.user@puppet.com",
+      "Password": "GFXXNACxTHReA;a8ngHVXiF"
+    }
+  }
+}

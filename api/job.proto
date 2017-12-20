@@ -1,0 +1,6 @@
+syntax = "proto3";
+package api;
+
+message Job {
+    string uuid = 1;
+}
