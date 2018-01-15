@@ -4,10 +4,10 @@ package api;
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 import "protoc-gen-swagger/options/annotations.proto";
-import "api/secret.proto";
-import "api/job.proto";
-import "api/resource.proto";
-import "api/provider.proto";
+import "secret.proto";
+import "job.proto";
+import "resource.proto";
+import "provider.proto";
 
 
 option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
