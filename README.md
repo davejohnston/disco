@@ -1,5 +1,4 @@
-# constellation
-Discovery Pipeline Architecture Alignment
+# Build
 
 ```make all```
 
