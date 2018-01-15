@@ -1,9 +1,8 @@
 BIN=./bin/
 GEN_DIR=./internal
 
-PROTOBUF_INCLUDES += -I${GOPATH}/src
-PROTOBUF_INCLUDES += -I${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis
-PROTOBUF_INCLUDES += -I${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/
+PROTOBUF_INCLUDES += -Ivendor/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis
+PROTOBUF_INCLUDES += -Ivendor/github.com/grpc-ecosystem/grpc-gateway/
 
 all: dirs protoc gateway swagger controller
 
